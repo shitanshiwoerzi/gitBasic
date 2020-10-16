@@ -32,5 +32,12 @@ class Catalogue {
       .map((p) => p.id);
     return result;
   }
+  batchAddProducts(batch) {
+    const validAdditions = batch.products.filter(
+      (product) => product.quantityInStock > 0
+    )
+    validAdditions.forEach((p) => this.addProduct(p) );
+    return validAdditions.length;
+  }
 }
 module.exports = Catalogue;
